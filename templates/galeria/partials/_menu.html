@@ -1,8 +1,19 @@
 {% load static %}
 <div class="pagina-inicial">
+
+  
+    <div style="float: right;">
+        
+        <p style="color:white;" > Usuário: {{ user.get_username }}</p>
+        <a style="color:white;" href="{% url 'logout'%}?next={{request.path}}">Logout</a>
+    
+    </div>
+
+
     <header class="cabecalho">
         <img src="{% static '/assets/logo/Logo(2).png' %}" alt="Logo da Alura Space" />
         <div class="cabecalho__busca">
+          {% if perms.galeria.buscar_no_site %}
             <div class="busca__fundo">
                 <form action="{% url 'buscar' %}">
                     <input class="busca__input" name="buscar" type="text" placeholder="O que você procura?">
@@ -11,6 +22,7 @@
                     </button>
                 </form>
               </div>
+          {% endif %}
         </div>
     </header>
     <main class="principal">
@@ -22,3 +34,4 @@
                 <a href="#"><img src="{% static '/assets/icones/1x/Surpreenda-me - inativo.png' %}"> Surpreenda-me</a>
             </nav>
         </section>
+      

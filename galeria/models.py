@@ -3,6 +3,10 @@ from datetime import datetime
 
 class Fotografia(models.Model):
 
+    class Meta:
+
+        permissions = (("buscar_no_site", "Permitir o usuario realizar busca no site"),)
+        
     OPCOES_CATEGORIA = [
         ("NEBULOSA", "Nebulosa"),
         ("ESTRELA","Estrela"),
@@ -20,3 +24,7 @@ class Fotografia(models.Model):
 
     def __str__(self):
         return self.nome
+    
+
+
+
